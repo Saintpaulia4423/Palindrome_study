@@ -1,3 +1,5 @@
+module.exports = Phrase;
+
 String.prototype.reverse = (string) => {
     return Array.from(this).reverse().join("");
 }
