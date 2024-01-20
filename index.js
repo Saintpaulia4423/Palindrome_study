@@ -1,6 +1,6 @@
 module.exports = Phrase;
 
-String.prototype.reverse = (string) => {
+String.prototype.reverse = function () {
     return Array.from(this).reverse().join("");
 }
 
@@ -19,7 +19,14 @@ function Phrase(content) {
 
     // パリンドロームのテスト用に変換したcontentを返す
     this.processedContent = function processedContent() {
-        return this.processer(this.content);
+        return this.processer(this.letters());
+    }
+
+    // コンテンツの文字だけを返す。
+    // 利用例：
+    //  new Phrase("Hello, world!").letters() === "Helloworld"
+    this.letters = function letters() {
+        return (this.content.match(/[a-z]/gi) || []).join("");
     }
 
     // パリンドロームならtrueを、違うならfalseを返す
